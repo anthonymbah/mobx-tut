@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can create an instance of list of model on patch change 1`] = `
+Array [
+  Object {
+    "op": "add",
+    "path": "/items/0",
+    "value": Object {
+      "name": "book One",
+      "price": 23,
+    },
+  },
+  Object {
+    "op": "replace",
+    "path": "/items/0/name",
+    "value": "book X",
+  },
+]
+`;
+
+exports[`can create an instance of list of model on state change 1`] = `
+Array [
+  Object {
+    "items": Array [
+      Object {
+        "name": "book One",
+        "price": 23,
+      },
+    ],
+  },
+  Object {
+    "items": Array [
+      Object {
+        "name": "book X",
+        "price": 23,
+      },
+    ],
+  },
+]
+`;
+
+exports[`can create an instance of list of model: snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "name": "book One",
+      "price": 23,
+    },
+  ],
+}
+`;
