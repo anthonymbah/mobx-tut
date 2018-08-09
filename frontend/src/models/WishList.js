@@ -1,5 +1,5 @@
 import { types } from 'mobx-state-tree';
-
+import { reaction } from 'mobx';
 
 const WishListItem = types.model({
 	name: types.string,
@@ -25,7 +25,19 @@ const WishList = types.model({
 	}
 }));
 
+const WishUser = types.model({
+	name: types.optional(types.string, ''),
+}).actions(self => ({
+	update(values){
+		self.name = values;
+	},
+	bind(form){
+		reaction(() => form.values, values => self.update(values));
+	},
+}));
+
 export {
 	WishList,
 	WishListItem,
+	WishUser,
 }

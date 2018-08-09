@@ -1,6 +1,6 @@
 import { getSnapshot, onSnapshot, onPatch } from 'mobx-state-tree';
-import { reaction } from 'mobx';
-import { WishList, WishListItem } from './WishList';
+import { reaction, observable } from 'mobx';
+import { WishList, WishListItem, WishUser } from './WishList';
 
 it('can create an instance of the model', () => {
 
@@ -98,4 +98,26 @@ it('can total price', () => {
 	item.changePrice(24);
 	expect(changed).toBe(1);
 
+});
+
+// @observable
+// class Form {
+// 	constructor(){
+// 		this.val = 'ONE';
+// 	}
+
+// 	values(){
+// 		return this.val;
+// 	}
+// }
+
+it('reaction test', () => {
+
+	const user = WishUser.create({name: 'ONE'});
+	 const form = observable({ values: '' });
+	 // const form = new Form();
+	user.bind(form);
+	expect(user.name).toBe('ONE');
+	form.values = 'TWO';
+	expect(user.name).toBe('TWO');	
 });
